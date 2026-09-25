@@ -167,4 +167,5 @@ export interface ServiceRequest {
   notes: string
   status: SolicitacaoStatus
   createdAt: string
+  createdTime?: string
 }
