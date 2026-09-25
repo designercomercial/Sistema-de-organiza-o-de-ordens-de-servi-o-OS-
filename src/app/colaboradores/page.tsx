@@ -38,7 +38,7 @@ export default function EmployeesPage() {
         actions={
           <Button onClick={() => setOpen(true)}>
             <Plus data-icon="inline-start" />
-            Cadastrar colaborador
+            Novo colaborador
           </Button>
         }
       />
@@ -73,7 +73,7 @@ export default function EmployeesPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Cadastrar colaborador</DialogTitle>
+            <DialogTitle>Novo colaborador</DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
             <div className="space-y-1.5">

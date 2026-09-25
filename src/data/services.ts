@@ -1,4 +1,4 @@
-import type { CensoPrevio, ServiceRequest } from "@/types"
+import type { ServiceRequest } from "@/types"
 
 export const serviceRequests: ServiceRequest[] = [
   {
@@ -36,40 +36,5 @@ export const serviceRequests: ServiceRequest[] = [
     notes: "Inspeção anual obrigatória da rede predial.",
     status: "aprovada",
     createdAt: "2026-09-10",
-  },
-]
-
-export const censusRecords: CensoPrevio[] = [
-  {
-    id: "cp-201",
-    number: 201,
-    clientName: "Supermercado Bom Preço",
-    phone: "(11) 91234-5678",
-    date: "2026-09-12",
-    arrivalTime: "09:00",
-    departureTime: "10:30",
-    unit: "Manaus",
-    supervisor: "Ana Souza",
-    executorId: "e1",
-    establishment: "Supermercado Bom Preço",
-    equipment: {
-      hasStove: true,
-      quantity: "3",
-      brand: "Fogatti",
-      model: "FG-6B",
-      warranty: true,
-      burnerCount: "6",
-      stoveType: "Convencional",
-    },
-    technicalVisit: {
-      problemSolved: true,
-      complaint: "Chama irregular em duas bocas.",
-      diagnosis: "Injetores substituídos e regulados conforme especificação.",
-    },
-    receivedGuide: true,
-    acknowledgedServices: true,
-    responsibleRole: "Síndico(a)",
-    responsibleName: "Paula Nogueira",
-    createdAt: "2026-09-12",
   },
 ]

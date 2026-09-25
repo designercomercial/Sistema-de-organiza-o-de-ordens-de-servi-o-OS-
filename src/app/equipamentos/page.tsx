@@ -62,7 +62,7 @@ export default function EquipmentPage() {
         actions={
           <Button onClick={() => setOpen(true)}>
             <Plus data-icon="inline-start" />
-            Cadastrar equipamento
+            Novo equipamento
           </Button>
         }
       />
@@ -143,7 +143,7 @@ export default function EquipmentPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Cadastrar equipamento</DialogTitle>
+            <DialogTitle>Novo equipamento</DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
             <div className="space-y-1.5">

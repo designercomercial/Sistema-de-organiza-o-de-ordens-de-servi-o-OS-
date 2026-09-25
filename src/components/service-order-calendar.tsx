@@ -14,9 +14,8 @@ import {
   startOfWeek,
 } from "date-fns"
 import { ptBR } from "date-fns/locale"
-import { ChevronLeft, ChevronRight, Plus } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { PageHeader } from "@/components/page-header"
 import { StatusBadge } from "@/components/status-badge"
 import { formatEmployeeNames } from "@/lib/employees"
 import { addHoursToTime, DEMO_TODAY } from "@/lib/demo-date"
@@ -28,9 +27,9 @@ type View = "mes" | "semana" | "lista" | "timeline"
 
 const hours = Array.from({ length: 11 }, (_, index) => 7 + index)
 
-export default function SchedulePage() {
+export function ServiceOrderCalendar() {
   const router = useRouter()
-  const { serviceOrders, setNewOsOpen, employees } = useApp()
+  const { serviceOrders, employees } = useApp()
   const { clientById, employeeById, equipmentById, serviceTypeById } = useLookups()
   const [cursor, setCursor] = useState(new Date(`${DEMO_TODAY}T12:00:00`))
   const [view, setView] = useState<View>("mes")
@@ -56,16 +55,6 @@ export default function SchedulePage() {
 
   return (
     <div>
-      <PageHeader
-        title="Agendamentos"
-        description="Visualize e organize os atendimentos da equipe."
-        actions={
-          <Button onClick={() => setNewOsOpen(true)}>
-            <Plus data-icon="inline-start" />
-            Nova OS
-          </Button>
-        }
-      />
       <div className="mb-4 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-center gap-2">
           <Button

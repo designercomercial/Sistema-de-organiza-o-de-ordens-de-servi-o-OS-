@@ -1,9 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { Plus } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import {
   Table,
   TableBody,
@@ -13,37 +11,17 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { PageHeader } from "@/components/page-header"
-import { DEMO_TODAY } from "@/lib/demo-date"
 import { useApp } from "@/store/app-store"
 
 export default function QuestionnairesPage() {
   const router = useRouter()
-  const { questionnaires, serviceTypes, addQuestionnaire } = useApp()
+  const { questionnaires, serviceTypes } = useApp()
 
   return (
     <div>
       <PageHeader
         title="Questionários"
         description="Checklists simples, vinculados ao tipo de serviço."
-        actions={
-          <Button
-            onClick={() => {
-              const id = `q-${Date.now()}`
-              addQuestionnaire({
-                id,
-                name: "Novo questionário",
-                serviceTypeId: serviceTypes[0]?.id ?? "",
-                status: "ativo",
-                updatedAt: DEMO_TODAY,
-                questions: [],
-              })
-              router.push(`/questionarios/${id}`)
-            }}
-          >
-            <Plus data-icon="inline-start" />
-            Criar questionário
-          </Button>
-        }
       />
       <div className="overflow-hidden rounded-xl border bg-card shadow-sm">
         <Table>

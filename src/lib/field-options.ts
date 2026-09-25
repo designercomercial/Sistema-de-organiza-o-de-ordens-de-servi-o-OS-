@@ -4,27 +4,12 @@ export function toOptions(values: string[]) {
   return values.map((value) => ({ id: value, label: value }))
 }
 
-export const UNIDADES = ["Manaus", "Recife", "Biguaçu"]
-
-export const SUPERVISORES = ["Ana Souza", "Bruno Almeida", "Camila Oliveira", "Carlos Mendes"]
-
 export const ESTABELECIMENTOS = [
   "Supermercado Bom Preço",
   "Restaurante Sabor da Casa",
   "Panificadora Pão & Cia",
   "Hotel Central",
 ]
-
-export const RESPONSAVEL_OPTIONS = [
-  "Proprietário",
-  "Inquilino",
-  "Zelador",
-  "Síndico(a)",
-  "Secretária",
-  "Outro",
-]
-
-export const TIPO_FOGAO_OPTIONS = ["Convencional", "Embutido", "Mesa"]
 
 export const SERVICOS_PRESTADOS_OPTIONS = [
   "Conversão",

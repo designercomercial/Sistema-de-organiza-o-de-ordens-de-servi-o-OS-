@@ -50,7 +50,7 @@ export default function LocationsPage() {
         actions={
           <Button onClick={() => setOpen(true)}>
             <Plus data-icon="inline-start" />
-            Cadastrar local
+            Novo local
           </Button>
         }
       />
@@ -105,7 +105,7 @@ export default function LocationsPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Cadastrar local</DialogTitle>
+            <DialogTitle>Novo local</DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
             <div className="space-y-1.5">

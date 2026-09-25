@@ -22,21 +22,18 @@ import {
 import { DEMO_TODAY } from "@/lib/demo-date"
 import { getDisplayStatus } from "@/lib/status"
 import type {
-  CensoPrevio,
   Client,
   Employee,
   Equipment,
   Location,
-  NewCensoPrevioInput,
   NewServiceOrderInput,
-  NewServiceRequestInput,
   Questionnaire,
   ServiceOrder,
   ServiceOrderStatus,
   ServiceRequest,
   ServiceType,
 } from "@/types"
-import { serviceRequests as seedServiceRequests, censusRecords as seedCensusRecords } from "@/data/services"
+import { serviceRequests as seedServiceRequests } from "@/data/services"
 
 type AppState = {
   employees: Employee[]
@@ -47,21 +44,17 @@ type AppState = {
   questionnaires: Questionnaire[]
   serviceOrders: ServiceOrder[]
   serviceRequests: ServiceRequest[]
-  censusRecords: CensoPrevio[]
   currentUser: Employee
   newOsOpen: boolean
   setNewOsOpen: (open: boolean) => void
   createServiceOrder: (input: NewServiceOrderInput) => ServiceOrder
   updateOrderStatus: (id: string, status: ServiceOrderStatus) => void
   toggleChecklistItem: (orderId: string, itemId: string) => void
-  createServiceRequest: (input: NewServiceRequestInput) => ServiceRequest
-  createCensoPrevio: (input: NewCensoPrevioInput) => CensoPrevio
   addClient: (client: Omit<Client, "id">) => Client
   addLocation: (location: Omit<Location, "id">) => Location
   addEquipment: (item: Omit<Equipment, "id">) => Equipment
   addEmployee: (item: Omit<Employee, "id" | "initials">) => Employee
   addServiceType: (item: Omit<ServiceType, "id">) => ServiceType
-  addQuestionnaire: (item: Questionnaire) => void
   updateQuestionnaire: (item: Questionnaire) => void
   updateServiceType: (item: ServiceType) => void
 }
@@ -76,8 +69,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [serviceTypes, setServiceTypes] = useState(seedServiceTypes)
   const [questionnaires, setQuestionnaires] = useState(seedQuestionnaires)
   const [serviceOrders, setServiceOrders] = useState(seedOrders)
-  const [serviceRequests, setServiceRequests] = useState(seedServiceRequests)
-  const [censusRecords, setCensusRecords] = useState(seedCensusRecords)
+  const [serviceRequests] = useState(seedServiceRequests)
   const [newOsOpen, setNewOsOpen] = useState(false)
 
   const createServiceOrder = useCallback((input: NewServiceOrderInput) => {
@@ -118,37 +110,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     )
   }, [])
 
-  const createServiceRequest = useCallback((input: NewServiceRequestInput) => {
-    let created!: ServiceRequest
-    setServiceRequests((current) => {
-      const nextNumber = current.length ? Math.max(...current.map((item) => item.number)) + 1 : 501
-      created = {
-        id: `sr-${nextNumber}`,
-        number: nextNumber,
-        ...input,
-        status: "pendente",
-        createdAt: DEMO_TODAY,
-      }
-      return [created, ...current]
-    })
-    return created
-  }, [])
-
-  const createCensoPrevio = useCallback((input: NewCensoPrevioInput) => {
-    let created!: CensoPrevio
-    setCensusRecords((current) => {
-      const nextNumber = current.length ? Math.max(...current.map((item) => item.number)) + 1 : 201
-      created = {
-        id: `cp-${nextNumber}`,
-        number: nextNumber,
-        ...input,
-        createdAt: DEMO_TODAY,
-      }
-      return [created, ...current]
-    })
-    return created
-  }, [])
-
   const addClient = useCallback((client: Omit<Client, "id">) => {
     const next: Client = { ...client, id: `c-${Date.now()}` }
     setClients((current) => [next, ...current])
@@ -185,10 +146,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     return next
   }, [])
 
-  const addQuestionnaire = useCallback((item: Questionnaire) => {
-    setQuestionnaires((current) => [item, ...current])
-  }, [])
-
   const updateQuestionnaire = useCallback((item: Questionnaire) => {
     setQuestionnaires((current) =>
       current.map((entry) => (entry.id === item.id ? item : entry))
@@ -211,21 +168,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
       questionnaires,
       serviceOrders,
       serviceRequests,
-      censusRecords,
       currentUser,
       newOsOpen,
       setNewOsOpen,
       createServiceOrder,
       updateOrderStatus,
       toggleChecklistItem,
-      createServiceRequest,
-      createCensoPrevio,
       addClient,
       addLocation,
       addEquipment,
       addEmployee,
       addServiceType,
-      addQuestionnaire,
       updateQuestionnaire,
       updateServiceType,
     }),
@@ -238,19 +191,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
       questionnaires,
       serviceOrders,
       serviceRequests,
-      censusRecords,
       newOsOpen,
       createServiceOrder,
       updateOrderStatus,
       toggleChecklistItem,
-      createServiceRequest,
-      createCensoPrevio,
       addClient,
       addLocation,
       addEquipment,
       addEmployee,
       addServiceType,
-      addQuestionnaire,
       updateQuestionnaire,
       updateServiceType,
     ]

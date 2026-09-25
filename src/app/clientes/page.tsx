@@ -52,7 +52,7 @@ export default function ClientsPage() {
         actions={
           <Button onClick={() => setOpen(true)}>
             <Plus data-icon="inline-start" />
-            Cadastrar cliente
+            Novo cliente
           </Button>
         }
       />
@@ -107,7 +107,7 @@ export default function ClientsPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Cadastrar cliente</DialogTitle>
+            <DialogTitle>Novo cliente</DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
             <Field label="Nome" value={form.name} onChange={(name) => setForm({ ...form, name })} />

@@ -39,7 +39,7 @@ export default function ServiceTypesPage() {
         actions={
           <Button onClick={() => setOpen(true)}>
             <Plus data-icon="inline-start" />
-            Cadastrar tipo de serviço
+            Novo tipo de serviço
           </Button>
         }
       />
@@ -79,7 +79,7 @@ export default function ServiceTypesPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Cadastrar tipo de serviço</DialogTitle>
+            <DialogTitle>Novo tipo de serviço</DialogTitle>
           </DialogHeader>
           <div className="space-y-3">
             <div className="space-y-1.5">

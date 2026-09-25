@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react"
 import { usePathname, useRouter } from "next/navigation"
-import { Contrast, Globe, PanelLeft, Plus, Search, Sun } from "lucide-react"
+import { Contrast, Globe, PanelLeft, Search, Sun } from "lucide-react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,11 +11,8 @@ import { useApp, useLookups } from "@/store/app-store"
 import { useAuth } from "@/store/auth-store"
 
 const titles: Record<string, string> = {
-  "/": "Checklist",
+  "/": "Caixa de entrada",
   "/ordens": "Ordens de serviço",
-  "/agendamentos": "Agendamentos",
-  "/servicos": "Serviços",
-  "/alertas": "Alertas",
   "/clientes": "Clientes",
   "/locais": "Locais",
   "/equipamentos": "Equipamentos",
@@ -23,7 +20,6 @@ const titles: Record<string, string> = {
   "/tipos-de-servico": "Tipos de serviço",
   "/questionarios": "Questionários",
   "/relatorios": "Relatórios",
-  "/relatorios-mensais": "Relatórios mensais",
   "/status": "Configurar status",
   "/prioridades": "Prioridades",
   "/personalizacao": "Personalização",
@@ -40,7 +36,7 @@ export function AppHeader({
 }) {
   const pathname = usePathname()
   const router = useRouter()
-  const { setNewOsOpen, serviceOrders, clients, equipment } = useApp()
+  const { serviceOrders, clients, equipment } = useApp()
   const { user, logout } = useAuth()
   const { clientById, serviceTypeById, employeeById } = useLookups()
   const [query, setQuery] = useState("")
@@ -187,11 +183,6 @@ export function AppHeader({
             </div>
           ) : null}
         </div>
-
-        <Button size="lg" onClick={() => setNewOsOpen(true)}>
-          <Plus data-icon="inline-start" />
-          Nova OS
-        </Button>
 
         <Button variant="ghost" className="hidden h-9 gap-2 px-2.5 font-medium lg:inline-flex">
           <Globe className="size-4" />
