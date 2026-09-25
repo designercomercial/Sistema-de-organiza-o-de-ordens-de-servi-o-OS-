@@ -46,6 +46,7 @@ const groups: NavGroup[] = [
   {
     id: "operacao",
     items: [
+      { href: "/", label: "Caixa de entrada", icon: Inbox, end: true },
       { href: "/ordens", label: "Ordens de serviço", icon: ClipboardList, badge: "pendentes" },
     ],
   },
@@ -64,11 +65,6 @@ const groups: NavGroup[] = [
   {
     id: "analise",
     items: [{ href: "/relatorios", label: "Relatórios", icon: FileBarChart }],
-  },
-  {
-    id: "entrada",
-    bottom: true,
-    items: [{ href: "/", label: "Caixa de entrada", icon: Inbox, end: true }],
   },
   {
     id: "configuracoes",

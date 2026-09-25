@@ -9,6 +9,7 @@ import { ServiceOrderCalendar } from "@/components/service-order-calendar"
 import { ServiceOrderTable } from "@/components/service-order-table"
 import { DEMO_TODAY } from "@/lib/demo-date"
 import { formatOsNumber, getDisplayStatus } from "@/lib/status"
+import { cn } from "@/lib/utils"
 import { useApp, useLookups } from "@/store/app-store"
 import type { ServiceOrderStatus } from "@/types"
 
@@ -84,22 +85,39 @@ export default function OrdersPage() {
           </Button>
         }
       />
-      <div className="mb-4 inline-flex rounded-lg border bg-muted/40 p-0.5">
+      <div
+        role="radiogroup"
+        aria-label="Visualização"
+        className="relative mb-4 inline-grid grid-cols-2 rounded-full border bg-muted p-0.5"
+      >
+        <span
+          aria-hidden
+          className={cn(
+            "absolute top-0.5 bottom-0.5 left-0.5 w-[calc(50%-2px)] rounded-full bg-primary shadow-sm transition-transform duration-200",
+            mode === "agendamentos" && "translate-x-full"
+          )}
+        />
         {(
           [
             ["lista", "Lista de OS", List],
             ["agendamentos", "Agendamentos", CalendarDays],
           ] as const
         ).map(([id, label, Icon]) => (
-          <Button
+          <button
             key={id}
-            size="sm"
-            variant={mode === id ? "default" : "ghost"}
+            type="button"
+            role="radio"
+            aria-checked={mode === id}
+            aria-label={label}
+            title={label}
             onClick={() => setMode(id)}
+            className={cn(
+              "relative z-10 flex h-8 w-11 items-center justify-center rounded-full transition-colors",
+              mode === id ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+            )}
           >
-            <Icon data-icon="inline-start" />
-            {label}
-          </Button>
+            <Icon className="size-4" />
+          </button>
         ))}
       </div>
       {mode === "agendamentos" ? (
