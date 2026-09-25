@@ -1,0 +1,78 @@
+import type { Employee } from "@/types"
+
+export const employees: Employee[] = [
+  {
+    id: "e1",
+    name: "João Oliveira",
+    role: "Mecânico",
+    phone: "(92) 98811-1001",
+    email: "joao.oliveira@gos.demo",
+    status: "em_atendimento",
+    initials: "JO",
+  },
+  {
+    id: "e2",
+    name: "Ricardo Lima",
+    role: "Eletricista",
+    phone: "(92) 98811-1002",
+    email: "ricardo.lima@gos.demo",
+    status: "em_atendimento",
+    initials: "RL",
+  },
+  {
+    id: "e3",
+    name: "Lucas Martins",
+    role: "Técnico de Instalação",
+    phone: "(92) 98811-1003",
+    email: "lucas.martins@gos.demo",
+    status: "em_atendimento",
+    initials: "LM",
+  },
+  {
+    id: "e4",
+    name: "Marcos Silva",
+    role: "Mecânico",
+    phone: "(92) 98811-1004",
+    email: "marcos.silva@gos.demo",
+    status: "em_atendimento",
+    initials: "MS",
+  },
+  {
+    id: "e5",
+    name: "Karen Leça",
+    role: "Eletricista",
+    phone: "(92) 98811-1005",
+    email: "karen.leca@gos.demo",
+    status: "em_atendimento",
+    initials: "KL",
+  },
+  {
+    id: "e6",
+    name: "Carlos Mendes",
+    role: "Gerente Técnico",
+    phone: "(92) 98811-1006",
+    email: "carlos.mendes@gos.demo",
+    status: "ativo",
+    initials: "CM",
+  },
+  {
+    id: "e7",
+    name: "Fernanda Souza",
+    role: "Técnica de Campo",
+    phone: "(92) 98811-1007",
+    email: "fernanda.souza@gos.demo",
+    status: "em_atendimento",
+    initials: "FS",
+  },
+  {
+    id: "e8",
+    name: "Pedro Alves",
+    role: "Inspetor Técnico",
+    phone: "(92) 98811-1008",
+    email: "pedro.alves@gos.demo",
+    status: "disponivel",
+    initials: "PA",
+  },
+]
+
+export const currentUser = employees.find((e) => e.id === "e6")!

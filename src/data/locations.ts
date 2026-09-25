@@ -1,0 +1,60 @@
+import type { Location } from "@/types"
+
+export const locations: Location[] = [
+  {
+    id: "l1",
+    name: "Cozinha industrial",
+    clientId: "c1",
+    address: "Av. Djalma Batista, 1250 - Bloco B",
+    city: "Manaus",
+    state: "AM",
+  },
+  {
+    id: "l2",
+    name: "Central de gás",
+    clientId: "c1",
+    address: "Av. Djalma Batista, 1250 - Subsolo",
+    city: "Manaus",
+    state: "AM",
+  },
+  {
+    id: "l3",
+    name: "Padaria",
+    clientId: "c3",
+    address: "Av. Constantino Nery, 2100 - Térreo",
+    city: "Manaus",
+    state: "AM",
+  },
+  {
+    id: "l4",
+    name: "Cozinha da clínica",
+    clientId: "c4",
+    address: "Av. André Araújo, 450 - 2º andar",
+    city: "Manaus",
+    state: "AM",
+  },
+  {
+    id: "l5",
+    name: "Restaurante do hotel",
+    clientId: "c6",
+    address: "Av. Eduardo Ribeiro, 320 - Térreo",
+    city: "Manaus",
+    state: "AM",
+  },
+  {
+    id: "l6",
+    name: "Rede predial",
+    clientId: "c6",
+    address: "Av. Eduardo Ribeiro, 320",
+    city: "Manaus",
+    state: "AM",
+  },
+  {
+    id: "l7",
+    name: "Salão de festas",
+    clientId: "c12",
+    address: "Av. Coronel Teixeira, 1200 - Área comum",
+    city: "Manaus",
+    state: "AM",
+  },
+]
